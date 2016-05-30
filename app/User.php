@@ -22,16 +22,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
-    ];
-	
-	public function pixels()
-    {
-        return $this->hasMany('App\Pixels\Pixel');
-    }
-	
+    ];	
 		
 	public function popups()
     {
-        return $this->hasMany('App\Pixels\Popup');
+        return $this->hasMany('App\Popups\Popup');
     }
 }

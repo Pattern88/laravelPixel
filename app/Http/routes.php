@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     if (Auth::check()) {
-        return redirect('/pixels');
+        return redirect('/home');
     }
     return view('welcome');
 });
@@ -22,13 +22,13 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/pixels', 'PixelController@index');
-Route::get('/pixels/create', 'PixelController@create');
-Route::post('/pixels/store', 'PixelController@store');
-Route::get('/pixels/{pixel}', 'PixelController@show');
-Route::delete('/pixels/{pixel}/delete', 'PixelController@destroy');
+Route::get('/popups', 'PopupController@index');
+Route::get('/popups/create', 'PopupController@create');
+Route::post('/popups/store', 'PopupController@store');
+Route::get('/popups/{popup}', 'PopupController@show');
+Route::delete('/popups/{popup}/delete', 'PopupController@destroy');
 
-
+// Test view
 Route::get('/tests/one', 'TestController@one');
 Route::get('/tests/two', 'TestController@two');
 Route::get('/tests/three', 'TestController@three');

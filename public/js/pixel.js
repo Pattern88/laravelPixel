@@ -15,7 +15,7 @@ function checkIfJquerySet(){
 var domain = window.location.href;
 
 //$( document ).ready(function(){
-	$.get( "http://homestead.app/pixels/"+user_id+"?domain="+domain,{
+	$.get( "http://homestead.app/popups/"+user_id+"?domain="+domain,{
 
 	}, "json")
 		.done(function(data) {
@@ -36,7 +36,7 @@ function createAndInjectPopup(popupLocation)
 {
     popupLocationStyle = getPopupLocation(popupLocation);
 	model = '<div id="myModal" class="modal fade" role="dialog" '+popupLocationStyle+'>';
-	model +=			'<div class="modal-dialog" style="width:300px;margin:0px auto;"';
+	model +=			'<div class="modal-dialog" style="width:300px;margin:0px auto;background-color:white;"';
 	model +=				'<div class="modal-content">';
 	model +=					'<div class="modal-header">';
 	model +=						'<button type="button" class="close" data-dismiss="modal">&times;</button>';
@@ -58,23 +58,24 @@ function createAndInjectPopup(popupLocation)
 
 function getPopupLocation(popupLocation){
 	// top right
-	if (popupLocation == 1){
+	if (popupLocation == "top_right"){
 		return 'style="left:initial;bottom:initial"';
 
 	//bottom left
-	}else if (popupLocation == 2){
+	}else if (popupLocation == "bottom_left"){
 		return 'style="top:initial;right:initial"';
 		
 	// center	
-	}else if (popupLocation == 3){
-		return 'style="margin-top:100px"';
+	}else if (popupLocation == "screen_center"){
+		return 'style="margin-top:200px"';
 	}
 }
 
 
 function setPopupTrigger(popupTrigger){
-	// top right
-	if (popupTrigger == 1){
+	
+	//
+	if (popupTrigger == "user_close_tab"){
 		mouseleaveFlag = true;
 		$(document).mouseleave(function () {
 			if (mouseleaveFlag){
@@ -84,17 +85,15 @@ function setPopupTrigger(popupTrigger){
 		});
 
 	//bottom left
-	}else if (popupTrigger == 2){
+	}else if (popupTrigger == "5_second_after_load"){
 		$(function() {
-			// setTimeout() function will be fired after page is loaded
-			// it will wait for 5 sec. and then will fire
 			setTimeout(function() {
 			   $('#myModal').modal('show');
 			}, 5000);
 		});
 			
 	// center	
-	}else if (popupTrigger == 3){
+	}else if (popupTrigger == "scroll_25_percent_down"){
 		var pageHeight = $( window ).height();
 		var scrolToTrigger = pageHeight*0.25;
 		var scrollFlag = true;
