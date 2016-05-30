@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -28,8 +29,12 @@ class PixelController extends Controller
      */
     public function index()
     {
-		
-		return view('pixels.index');
+
+		// get all the users
+        $pixels = User::find(Auth::user()->id)->pixels;
+			//return "test";
+        // load the view and pass the nerds
+        return view('pixels.index')->with('pixels', $pixels);
     }
 	/**
      * Show the form for creating a new resource.
@@ -58,7 +63,7 @@ class PixelController extends Controller
             // ->with('user', $user);
 		if(Input::has('domain'))
 		{
-			$popup = User::find($id)->pixel()->where('url',  Input::get('domain'))->first();
+			$popup = User::find($id)->pixels->where('url', Input::get('domain'))->first();
 			return response()->json(['popupLocation' => $popup->popup_location, 'popupTrigger' => $popup->popup_trigger, 'url' => $popup->url]);
 		}
 		return false;
@@ -93,7 +98,25 @@ class PixelController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully created pop-up pixel!');
-            return redirect('pixels/create');
+            return redirect('pixels');
         }
+    }
+	
+	
+	/**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        // delete
+        $pixel = Pixel::find($id);
+        $pixel->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the popup');
+        return redirect('pixels');
     }
 }

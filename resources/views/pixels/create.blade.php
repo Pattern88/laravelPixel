@@ -3,22 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-		<div class="col-md-6 col-md-offset-2">
-			 <!-- will be used to show any messages -->
-			@if (Session::has('message'))
-				<div class="alert alert-info">{{ Session::get('message') }}</div>
-			@endif
-			
-			<!-- if there are creation errors, they will show here -->
-			@if ($errors->all())
-				<div class="alert alert-danger">
-					<ul>
-					@foreach ($errors->all() as $error)
-						<li>{{ $error }}</li>
-					@endforeach
-					</ul>
-				</div>
-			@endif
+	@include('pixels.message')
+		<div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">Create New Pop-Up</div>
 					<div class="panel-body">
@@ -30,18 +16,21 @@
 
 							<div class="form-group">
 								{!! Form::label('popup trigger', 'Popup Trigger',$attributes = array('for'=>'popup trigger')) !!}
-								{!! Form::select('popupTrigger', array('1' => 'When user closing tab', '2' => '5 second after page loading', '3' => 'After scrolling 25% down'), null, ['placeholder' => 'Select the pop-up trigger...' , 'class' => 'form-control']) !!}
+								{!! Form::select('popupTrigger', array('user_close_tab' => 'When user closing tab', '5_second_after_load' => '5 second after page loading', 'scroll_25_percent' => 'After scrolling 25% down'), null, ['placeholder' => 'Select the pop-up trigger...' , 'class' => 'form-control']) !!}
 							</div>
 							
 							<div class="form-group">
 								{!! Form::label('popup location', 'Popup Location',$attributes = array('for'=>'popup location')) !!}
-								{!! Form::select('popupLocation', array('1' => 'Center of the screen', '2' => 'Top right side', '3' => 'Bottom left side'), null, ['placeholder' => 'Select the pop-up location...' , 'class' => 'form-control']) !!}
+								{!! Form::select('popupLocation', array('screen_center' => 'Center of the screen', 'top_right' => 'Top right side', 'bottom_left' => 'Bottom left side'), null, ['placeholder' => 'Select the pop-up location...' , 'class' => 'form-control']) !!}
 							</div>
-							{!! Form::submit('Create Pop-Up!', array('class' => 'btn btn-primary')) !!}
+							{!! Form::submit('Create Popup!', array('class' => 'btn btn-primary pull-right')) !!}
 						{!! Form::close() !!}
 					</div>
             </div>
         </div>
     </div>
 </div>
+<!--{!! Form::select('popupTrigger', array('user_close_tab' => 'When user closing tab', '5_second_after_load' => '5 second after page loading', 'scroll_25_percent' => 'After scrolling 25% down'), null, ['placeholder' => 'Select the pop-up trigger...' , 'class' => 'form-control']) !!}
+{!! Form::select('popupLocation', array('screen_center' => 'Center of the screen', 'top_right' => 'Top right side', 'bottom_left' => 'Bottom left side'), null, ['placeholder' => 'Select the pop-up location...' , 'class' => 'form-control']) !!}
+-->
 @endsection

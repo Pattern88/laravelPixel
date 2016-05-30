@@ -15,9 +15,11 @@ class CreatePixelsTable extends Migration
 		//Schema::drop('pixels');
         Schema::create('pixels', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('url', 255)->unique();
+			$table->string('url', 255);
             $table->integer('popup_trigger')->unsigned();
             $table->integer('popup_location')->unsigned();
+			//$table->string('popup_trigger');
+            //$table->string('popup_location');
 			$table->integer('user_id')->unsigned();
             $table->timestamps();
         });

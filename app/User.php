@@ -24,13 +24,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 	
-	public function pixel()
+	public function pixels()
     {
         return $this->hasMany('App\Pixels\Pixel');
     }
 	
 		
-	public function popup()
+	public function popups()
     {
         return $this->hasMany('App\Pixels\Popup');
     }
