@@ -10,8 +10,6 @@
 </style>
 <div class="container" height="1900" width="200">
     <div class="row">
-		<img src="http://homestead.app/test/test?uid={{Auth::user()->id}}" width="1" height="1">		
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Your Pixel</button>
     </div>
 </div>
 @endsection
@@ -32,19 +30,3 @@ var user_id = {{Auth::user()->id}};
 })();
 </script>
 <!-- Pop-Up Snipet script - End -->
-
-<script language="javascript">
-
-
-
-
-//$('#myModal').modal('toggle');
-//$('#myModal').modal('show');
-//$('#myModal').modal('hide');
-
-
-
-
-
-
-</script>

@@ -4,7 +4,7 @@ namespace App\Pixels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pixel extends Model
+class Popup extends Model
 {
 	/**
      * The attributes that are mass assignable.

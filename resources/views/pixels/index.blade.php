@@ -12,17 +12,31 @@
 		<div class="alert alert-danger">{{ $error }}</div>
 	@endforeach
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-6 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Your Pixel</div>
 					<div class="panel-body">
-						&lt;img src="http://homestead.app/test/test?uid={{Auth::user()->id}}"&gt;
+						&lt;!-- Pop-Up snipet script - Start --&gt <br>
+						&lt;script language="javascript"&gt<br>
+						var user_id = {{Auth::user()->id}};<br>
+
+						(function(){<br>
+						  var script = document.createElement('script');<br>
+						  script.async = true;<br>
+						  script.src = 'http://homestead.app/js/pixel.js';<br>
+						  var ref = document.getElementsByTagName('script')[0];<br>
+						  ref.parentNode.insertBefore(script, ref);<br>
+						})();<br>
+						&lt;/script&gt <br>
+						&lt;!-- Pop-Up Snipet script - End --&gt <br>
+						
+						<!--img src="http://homestead.app/test/test?uid={{Auth::user()->id}}-->
 					</div>
             </div>
         </div>
 					<!-- Trigger the modal with a button -->
 			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
+			<a href="/pixels/create" class="btn btn-success">Create Popup</a>
 			<!-- Modal -->
 			<div id="myModal" class="modal fade" role="dialog">
 			  <div class="modal-dialog">

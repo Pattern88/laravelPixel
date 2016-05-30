@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Pixels\Pixel;
-
+use App\User;
 use Session;
 
 class PixelController extends Controller
@@ -31,7 +31,39 @@ class PixelController extends Controller
 		
 		return view('pixels.index');
     }
+	/**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        // load the create form (app/views/pixels/create.blade.php)
+        return view('pixels.create');
+    }
 	
+	/**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        // // get the user
+        // $user = User::find($id);
+
+        // // show the view and pass the user to it
+        // return view('pixels.test')
+            // ->with('user', $user);
+		if(Input::has('domain'))
+		{
+			$popup = User::find($id)->pixel()->where('url',  Input::get('domain'))->first();
+			return response()->json(['popupLocation' => $popup->popup_location, 'popupTrigger' => $popup->popup_trigger, 'url' => $popup->url]);
+		}
+		return false;
+    }
+
 	public function store(Request $request)
     {
 		
@@ -47,7 +79,7 @@ class PixelController extends Controller
 
         // process the login
         if ($validator->fails()) {
-            return redirect('pixels')
+            return redirect('pixels/create')
                 ->withErrors($validator)
                 ->withInput(Input::all());
         } else {
@@ -61,7 +93,7 @@ class PixelController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully created pop-up pixel!');
-            return redirect('pixels');
+            return redirect('pixels/create');
         }
     }
 }

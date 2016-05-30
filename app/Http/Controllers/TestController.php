@@ -25,7 +25,6 @@ class TestController extends Controller
      */
     public function index()
     {
-		
 		return view('tests.one');
     } 
 
@@ -47,7 +46,7 @@ class TestController extends Controller
      */
     public function two()
     {
-		return view('pixels.index');
+		return view('tests.two');
     }
 	
 	
