@@ -69,7 +69,7 @@ function createAndInjectPopup(popupLocation)
 function getPopupLocation(popupLocation){
 	// top right
 	if (popupLocation == "top_right"){
-		return 'style="left:initial;bottom:initial"';
+		return 'style="left:initial;bottom:initial;padding-right:0px !important"';
 
 	//bottom left
 	}else if (popupLocation == "bottom_left"){
