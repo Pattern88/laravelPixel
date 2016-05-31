@@ -12,23 +12,27 @@
 */
 
 Route::get('/', function () {
+	// if user login
     if (Auth::check()) {
         return redirect('/home');
     }
+	// else return to welcome page
     return view('welcome');
 });
 
 Route::auth();
 
+// Handle /home routes
 Route::get('/home', 'HomeController@index');
 
+// Handle /popups routes
 Route::get('/popups', 'PopupController@index');
 Route::get('/popups/create', 'PopupController@create');
 Route::post('/popups/store', 'PopupController@store');
 Route::get('/popups/{popup}', 'PopupController@show');
 Route::delete('/popups/{popup}/delete', 'PopupController@destroy');
 
-// Test view
+// Handle /tests routes
 Route::get('/tests/one', 'TestController@one');
 Route::get('/tests/two', 'TestController@two');
 Route::get('/tests/three', 'TestController@three');

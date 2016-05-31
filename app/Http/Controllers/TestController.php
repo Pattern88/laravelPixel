@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * File: TestController.php
+ *
+ * Handle all Test related function: index/show
+ *
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,7 +14,7 @@ use App\Http\Requests;
 
 class TestController extends Controller
 {
-    	/**
+	/**
      * Create a new controller instance.
      *
      * @return void
@@ -19,9 +25,9 @@ class TestController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show view('tests.one');
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -29,9 +35,9 @@ class TestController extends Controller
     } 
 
 	/**
-     * Show the application dashboard.
+     * Show view('tests.one')
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function one()
     {
@@ -40,15 +46,21 @@ class TestController extends Controller
     }	
 	
 	/**
-     * Show the application dashboard.
+     * Show view('tests.two')
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function two()
     {
 		return view('tests.two');
     }
 	
+	
+	/**
+     * Show view('tests.three')
+     *
+     * @return Response
+     */
 	public function three()
     {
 		return view('tests.three');

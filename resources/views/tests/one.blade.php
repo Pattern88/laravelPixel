@@ -4,7 +4,7 @@
 
 <div class="container" >
     <div class="row">
-	    <div class="col-md-10 col-md-offset-2">
+	    <div class="col-md-10 col-md-offset-3">
 			<img src="http://www.personalcreations.com/blog/wp-content/uploads/2014/09/how-long-to-read2.png" />
         </div>
     </div>

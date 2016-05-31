@@ -35,7 +35,7 @@
 						<!-- we will add this later since its a little more complicated than the other two buttons -->
 						{!! Form::open(array('url' => 'popups/' . $popup->id.'/delete', 'role' => 'form')) !!}
 							{!! Form::hidden('_method', 'DELETE') !!}
-							{!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+							{!! Form::submit('Delete', array('class' => 'btn btn-danger bth-xs')) !!}
 						{!! Form::close() !!}
 					</td>
 				</tr>

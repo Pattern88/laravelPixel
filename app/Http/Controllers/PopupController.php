@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * File: PopupController.php
+ *
+ * Handle all popup related function: index/create/show/store/
+ *
+ */
+
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Contracts\Validation\Validator;
@@ -15,7 +22,7 @@ class PopupController extends Controller
 	/**
      * Create a new controller instance.
      *
-     * @return void
+     * 
      */
     public function __construct()
     {
@@ -25,7 +32,7 @@ class PopupController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -66,7 +73,12 @@ class PopupController extends Controller
 		return view('popups');
     }
 
-	public function store(Request $request)
+	/**
+     * Save specified resource.
+     *
+     * @return Response
+     */
+	public function store()
     {
 		
 		// validate
@@ -79,7 +91,8 @@ class PopupController extends Controller
 		
         $validator = Validator(Input::all(), $rules);
 
-        // process the login
+        // Validate the popus form data
+		// If error
         if ($validator->fails()) {
             return redirect('popups/create')
                 ->withErrors($validator)
@@ -90,7 +103,7 @@ class PopupController extends Controller
             $popup->url       			= Input::get('url');
             $popup->popup_trigger     	= Input::get('popupTrigger');
             $popup->popup_location 		= Input::get('popupLocation');
-			$popup->user_id 			= $request->user()->id;
+			$popup->user_id 			= Auth::user()->id;
             $popup->save();
 
             // redirect

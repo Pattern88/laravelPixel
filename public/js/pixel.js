@@ -1,19 +1,38 @@
 /**
+ * File: pixel.js
  *
- *
- *
+ * Handle popup snipet script
  *
  */
+ 
+
+/**
+ * Check if jquery script is loaded, if not... load it automatically
+ *
+ * 
+ */ 
 function checkIfJquerySet(){
-	// To Do: Check if jquery script is loaded, if not... load it automatically
+	// To Do: create the function
 }
-	
+
+
+/**
+ * get popup configuration data and acrivate it
+ *
+ * @params string popupLocation, popupTrigger
+ * 
+ */ 
 function activatePopup(popupTrigger,popupLocation){
 	createAndInjectPopup(popupLocation);
 	setPopupTrigger(popupTrigger);
 }
 
-// Generate boostrap model as popup and inject it to the website
+/**
+ * Generate boostrap model as popup and inject it to the website
+ *
+ * @params string popupLocation
+ * 
+ */ 
 function createAndInjectPopup(popupLocation)
 {
 	//get the popup location setting
@@ -41,7 +60,12 @@ function createAndInjectPopup(popupLocation)
 }
 
 
-// return the popup location via style attribute
+/**
+ * Show return the popup location via style attribute
+ *
+ * @params string popupLocation
+ * @return string
+ */
 function getPopupLocation(popupLocation){
 	// top right
 	if (popupLocation == "top_right"){
@@ -57,7 +81,11 @@ function getPopupLocation(popupLocation){
 	}
 }
 
-// Set the popup trigger
+/**
+ * Set the popup trigger and toggle it
+ *
+ * @params string popupLocation
+ */ 
 function setPopupTrigger(popupTrigger){
 	
 	// trigger if User close tab
@@ -92,12 +120,17 @@ function setPopupTrigger(popupTrigger){
 	}
 }
 
-// Genrate the popup injection
+
+/**
+ * Genrate the popup injection
+ *
+ * 
+ */ 
 function initiatePopup(){
 	
 	// checkIfJquerySet()
 	
-	var domain = window.location.href;
+	domain = window.location.href;
 
 	$.get( "http://homestead.app/popups/"+user_id+"?domain="+domain,{
 
