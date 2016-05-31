@@ -5,3 +5,7 @@ body {
 .fa-btn {
 	margin-right: 6px;
 }
+
+.login-button{
+    vertical-align: middle;
+}

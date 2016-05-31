@@ -2,15 +2,18 @@
 
 @section('content')
 
-<div class="container" height="1900" width="200">
+<div class="container" >
     <div class="row">
+	    <div class="col-md-10 col-md-offset-2">
+			<img src="http://www.personalcreations.com/blog/wp-content/uploads/2014/09/how-long-to-read2.png" />
+        </div>
     </div>
 </div>
 @endsection
 
 <!-- Pop-Up snipet script - Start -->
 <script language="javascript">
-var user_id = {{Auth::user()->id}};
+var user_id = 1;
 document.addEventListener("DOMContentLoaded", function (event) {
 (function(){
 	var script = document.createElement('script');
