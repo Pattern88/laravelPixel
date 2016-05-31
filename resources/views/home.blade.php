@@ -60,7 +60,7 @@
 				</div>
 		  </div>
 		  <div class="modal-footer">
-			{!! Form::submit('Create Pop-Up!', array('class' => 'btn btn-primary')) !!}
+			{!! Form::submit('Create Popup!', array('class' => 'btn btn-primary')) !!}
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		  </div>
 		  {!! Form::close() !!}
