@@ -55,29 +55,45 @@
 			<h4 class="modal-title">Create New Pup-Up Pixel</h4>
 		  </div>
 
-		  <div class="modal-body">
+		<div class="modal-body">
 			{!! Form::open(array('url' => 'popups/store', 'role' => 'form')) !!}
-				<div class="form-group">
-					{!! Form::label('url', 'Website Url',$attributes = array('for'=>'url')) !!}
+				<div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+					{!! Form::label('url', 'Website Url',$attributes = array('for'=>'url', 'class' => 'control-label')) !!}
 					{!! Form::text('url', $value = null, $attributes = array('class' => 'form-control')) !!}
+					@if ($errors->has('url'))
+						<span class="help-block">
+							<strong>{{ $errors->first('url') }}</strong>
+						</span>
+					@endif
 				</div>
 
-				<div class="form-group">
-					{!! Form::label('popup trigger', 'Popup Trigger',$attributes = array('for'=>'popup trigger')) !!}
+				<div class="form-group{{ $errors->has('popupTrigger') ? ' has-error' : '' }}">
+					{!! Form::label('popup trigger', 'Popup Trigger',$attributes = array('for'=>'popup trigger', 'class' => 'control-label')) !!}
 					{!! Form::select('popupTrigger', array('user_close_tab' => 'When user closing tab', '5_second_after_load' => '5 second after page loading', 'scroll_25_percent_down' => 'After scrolling 25% down'), null, ['placeholder' => 'Select the pop-up trigger...' , 'class' => 'form-control']) !!}
+					@if ($errors->has('popupTrigger'))
+						<span class="help-block">
+							<strong>{{ $errors->first('popupTrigger') }}</strong>
+						</span>
+					@endif
 				</div>
 				
-				<div class="form-group">
-					{!! Form::label('popup location', 'Popup Location',$attributes = array('for'=>'popup location')) !!}
-					{!! Form::select('popupTrigger', array('user_close_tab' => 'When user closing tab', '5_second_after_load' => '5 second after page loading', 'scroll_25_percent_down' => 'After scrolling 25% down'), null, ['placeholder' => 'Select the pop-up trigger...' , 'class' => 'form-control']) !!}
+				<div class="form-group{{ $errors->has('popupLocation') ? ' has-error' : '' }}">
+					{!! Form::label('popup location', 'Popup Location',$attributes = array('for'=>'popup location', 'class' => 'control-label')) !!}
+					{!! Form::select('popupLocation', array('screen_center' => 'Center of the screen', 'top_right' => 'Top right side', 'bottom_left' => 'Bottom left side'), null, ['placeholder' => 'Select the pop-up location...' , 'class' => 'form-control']) !!}
+					@if ($errors->has('popupLocation'))
+						<span class="help-block">
+							<strong>{{ $errors->first('popupLocation') }}</strong>
+						</span>
+					@endif							
 				</div>
-		  </div>
-		  <div class="modal-footer">
+		</div>
+		<div class="modal-footer">
 			{!! Form::submit('Create Pop-Up!', array('class' => 'btn btn-primary')) !!}
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		  </div>
-		  {!! Form::close() !!}
+			{!! Form::close() !!}
 		</div>
+		
+	</div>
 
 	  </div>
 	</div>	

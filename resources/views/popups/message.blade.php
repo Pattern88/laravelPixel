@@ -6,11 +6,3 @@
 			{{ Session::get('message') }}
 		</div>
 	@endif
-	
-	<!-- if there are creation errors, they will show here -->
-	@foreach ($errors->all() as $error)
-		<div class="alert alert-danger">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			{{ $error }}
-		</div>
-	@endforeach

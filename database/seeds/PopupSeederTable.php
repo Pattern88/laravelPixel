@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Popups\Popup;
 
-class PopupTableSeeder extends Seeder
+class PopupSeederTable extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class PopupTableSeeder extends Seeder
      */
     public function run()
     {
-		// !!! All existing roles are deleted !!!
+		// !!! All existing popups are deleted !!!
 		DB::table('popups')->truncate();
 	    $user=User::where('email', 'danib8888@gmail.com')->firstOrFail();
 		if (!is_null($user)){

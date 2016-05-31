@@ -1,3 +1,32 @@
+# LaravelPixel
+
+ A 'customers tracking pixel management system' based on Laravel 5.2
+
+## Setup 
+
+In linux run: 
+
+1) git clone https://github.com/Pattern88/laravelPixel.git
+
+2) cd laravelPixel 
+
+3) composer install
+
+4) copy .env.example .env 
+
+5) php artisan key:generate
+
+6) php artisan db:seed - Will populate the database with initial data
+
+7) php artisan serve - and go to the link
+
+## Login
+
+email: danib8888@gmail.com
+password: password
+
+Enjoy!
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
@@ -5,6 +34,10 @@
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+
+
+
+
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
