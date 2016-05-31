@@ -77,7 +77,7 @@ function getPopupLocation(popupLocation){
 		
 	// center	
 	}else if (popupLocation == "screen_center"){
-		return 'style="margin-top:200px"';
+		return 'style="margin-top:250px"';
 	}
 }
 

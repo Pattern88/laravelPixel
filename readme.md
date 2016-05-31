@@ -4,6 +4,11 @@
 
 ## Setup 
 
+I am using the Laravel Homestead virtual machine in order to first install Laravel 
+
+Link: https://laravel.com/docs/5.2/homestead
+
+
 In linux run: 
 
 1) git clone https://github.com/Pattern88/laravelPixel.git
@@ -21,6 +26,30 @@ In linux run:
 7) php artisan db:seed - Will populate the database with initial data
 
 8) go to you laravel domain - my laravel domain is 'homestead.app'
+
+## My Homestead.yaml file content
+
+---
+ip: "10.1.1.33"
+memory: 2048
+cpus: 1
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/Code
+      to: /home/vagrant/Code
+
+sites:
+    - map: homestead.app
+      to: /home/vagrant/Code/laravelPixel/public
+
+databases:
+    - homestead
 
 ## Login
 
