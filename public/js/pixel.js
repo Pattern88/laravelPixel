@@ -4,58 +4,44 @@
  *
  *
  */
-
 function checkIfJquerySet(){
 	// To Do: Check if jquery script is loaded, if not... load it automatically
 }
-
-// checkIfJquerySet()
-
-
-var domain = window.location.href;
-
-//$( document ).ready(function(){
-	$.get( "http://homestead.app/popups/"+user_id+"?domain="+domain,{
-
-	}, "json")
-		.done(function(data) {
-			activatePopup(data.popupTrigger,data.popupLocation);
-		})
-		.fail(function(data) {
-			alert("Error! Try again later!");
-		});
-//});
-
 	
 function activatePopup(popupTrigger,popupLocation){
 	createAndInjectPopup(popupLocation);
 	setPopupTrigger(popupTrigger);
 }
-		
+
+// Generate boostrap model as popup and inject it to the website
 function createAndInjectPopup(popupLocation)
 {
+	//get the popup location setting
     popupLocationStyle = getPopupLocation(popupLocation);
-	model = '<div id="myModal" class="modal fade" role="dialog" '+popupLocationStyle+'>';
-	model +=			'<div class="modal-dialog" style="width:300px;margin:0px auto;background-color:white;"';
-	model +=				'<div class="modal-content">';
-	model +=					'<div class="modal-header">';
-	model +=						'<button type="button" class="close" data-dismiss="modal">&times;</button>';
-	model +=						'<h4 class="modal-title">Pupup</h4>';
-	model +=					'</div>';
-	model +=					'<div class="modal-body">';
-	model +=						'Hello World!!!';
-	model +=					'</div>';
-	model +=					'<div class="modal-footer">';
-	model +=						'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-	model +=					'</div>';
-	model +=				'</div>';
-	model +=		    '</div>';
-	model +=		'</div>';
 	
-    $("body").append(model);
+	popup = '<div id="myModal" class="modal fade" role="dialog" '+popupLocationStyle+'>';
+	popup +=			'<div class="modal-dialog" style="width:300px;margin:0px auto;background-color:white;"';
+	popup +=				'<div class="modal-content">';
+	popup +=					'<div class="modal-header">';
+	popup +=						'<button type="button" class="close" data-dismiss="modal">&times;</button>';
+	popup +=						'<h4 class="modal-title">Pupup</h4>';
+	popup +=					'</div>';
+	popup +=					'<div class="modal-body">';
+	popup +=						'Hello World!!!';
+	popup +=					'</div>';
+	popup +=					'<div class="modal-footer">';
+	popup +=						'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
+	popup +=					'</div>';
+	popup +=				'</div>';
+	popup +=		    '</div>';
+	popup +=		'</div>';
+	
+	// insert popup into body tag
+    $("body").append(popup);
 }
 
 
+// return the popup location via style attribute
 function getPopupLocation(popupLocation){
 	// top right
 	if (popupLocation == "top_right"){
@@ -71,10 +57,10 @@ function getPopupLocation(popupLocation){
 	}
 }
 
-
+// Set the popup trigger
 function setPopupTrigger(popupTrigger){
 	
-	//
+	// trigger if User close tab
 	if (popupTrigger == "user_close_tab"){
 		mouseleaveFlag = true;
 		$(document).mouseleave(function () {
@@ -84,7 +70,7 @@ function setPopupTrigger(popupTrigger){
 			}
 		});
 
-	//bottom left
+	// trigger if 5 seconds was passed after page load
 	}else if (popupTrigger == "5_second_after_load"){
 		$(function() {
 			setTimeout(function() {
@@ -92,7 +78,7 @@ function setPopupTrigger(popupTrigger){
 			}, 5000);
 		});
 			
-	// center	
+	// // trigger if user scroll down 25% of the page
 	}else if (popupTrigger == "scroll_25_percent_down"){
 		var pageHeight = $( window ).height();
 		var scrolToTrigger = pageHeight*0.25;
@@ -105,3 +91,23 @@ function setPopupTrigger(popupTrigger){
 		});
 	}
 }
+
+// Genrate the popup injection
+function initiatePopup(){
+	
+	// checkIfJquerySet()
+	
+	var domain = window.location.href;
+
+	$.get( "http://homestead.app/popups/"+user_id+"?domain="+domain,{
+
+	}, "json")
+		.done(function(data) {
+			activatePopup(data.popupTrigger,data.popupLocation);
+		})
+		.fail(function(data) {
+			alert("Error! Try again later!");
+		});
+}
+
+initiatePopup();
