@@ -12,17 +12,20 @@ In linux run:
 
 3) composer install
 
-4) copy .env.example .env 
+4) cp .env.example .env 
 
-5) php artisan key:generate
+5) php artisan migrate - if you get " noting to migrate" - run 'php artisan migrate:refresh' and then again 'php artisan migrate'
 
-6) php artisan db:seed - Will populate the database with initial data
+6) php artisan key:generate
 
-7) php artisan serve - and go to the link
+7) php artisan db:seed - Will populate the database with initial data
+
+8) go to you laravel domain - my laravel domain is 'homestead.app'
 
 ## Login
 
 email: danib8888@gmail.com
+
 password: password
 
 Enjoy!
