@@ -16,7 +16,7 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>url</th>
+					<th>Url</th>
 					<th>Popup Trigger</th>
 					<th>Popup Location</th>
 					<th>Created Time</th>

@@ -36,3 +36,6 @@ Route::delete('/popups/{popup}/delete', 'PopupController@destroy');
 Route::get('/tests/one', 'TestController@one');
 Route::get('/tests/two', 'TestController@two');
 Route::get('/tests/three', 'TestController@three');
+
+// Handle Restful request
+Route::get('/tests/{id}', 'TestController@show');

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 (function(){
 	var script = document.createElement('script');
 	script.async = true;
-	script.src = 'http://homestead.app/js/pixel.js';
+	script.src = 'http://ec2-52-38-72-95.us-west-2.compute.amazonaws.com/js/pixel.js';
 	document.getElementsByTagName('script')[0].appendChild(script);
 })();
 });

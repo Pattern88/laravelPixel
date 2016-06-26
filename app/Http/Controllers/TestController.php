@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Input;
+
+use App\User;
+
+
+
 class TestController extends Controller
 {
 	/**
@@ -21,7 +27,7 @@ class TestController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -67,6 +73,17 @@ class TestController extends Controller
     }
 	
 	
-	
+    public function show($id)
+    {
+		
+		if(Input::has('domain'))
+		{
+			$popup = User::find($id)->popups->where('url', Input::get('domain'))->first();
+			if (!is_null($popup)){
+				return response()->json(['popupLocation' => $popup->popup_location, 'popupTrigger' => $popup->popup_trigger, 'url' => $popup->url]);
+			}
+		}
+		return view('popups');
+    }	
 	
 }

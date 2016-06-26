@@ -18,11 +18,10 @@ var backDrop;
         var r = document.createElement("script");
         r.setAttribute("type", "text/javascript");
         r.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js");
-        r.setAttribute('async','true');
-	if (r.readyState) {
+        if (r.readyState) {
             r.onreadystatechange = function() {
                 if (this.readyState == "complete" || this.readyState == "loaded") {
-                    x();
+                    x()
                 }
             }
         } else {
@@ -31,32 +30,11 @@ var backDrop;
     } else {
         console.log('jQuery is set');
 	jQuery = window.jQuery;
-	b();
     }
     function x() {
 	console.log('jQuery is set');        
 	jQuery = window.jQuery;
-	b();
     }
-    function b(){
-	if (typeof jQuery().model != 'function' ){
-		e = document.createElement("script");
-        	e.setAttribute("type", "text/javascript");
-        	e.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js");
-	 	if (e.readyState) {
-            		e.onreadystatechange = function() {
-                		if (this.readyState == "complete" || this.readyState == "loaded") {
-    	                		initiatePopup();
-        	        	}
-            		}
-        	} else {
-            		e.onload = initiatePopup;
-        	}
-		(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(e);
-    	}else{
-		initiatePopup();
-	}
-   }
 })();
 
 
@@ -86,29 +64,26 @@ function createPopup(popupLocation)
         popup +=                        '<div class="modal-dialog" style="width:300px;margin:0px auto;background-color:white;"';
         popup +=                                '<div class="modal-content">';
         popup +=                                        '<div class="modal-header" style="padding: 15px;border-bottom: 1px solid #e5e5e5;">';
-        popup +=                                                '<button type="button"  onclick="removeBackdrop(this)" class="close" data-dismiss="modal" style="margin-top: -2px;-webkit-appearance: none;padding: 0;cursor: pointer;background: 0 0;border: 0;float: right;font-size: 21px;font-weight: 700;line-height: 1;color: #000;text-shadow: 0 1px 0 #fff;filter: alpha(opacity=20);opacity: .2;text-transform: none;overflow: visible;font-family: inherit;margin: 0;font: inherit;align-items: flex-start;text-align: center;display: inline-block;text-indent: 0px;letter-spacing: normal;word-spacing: normal;text-rendering: auto;webkit-writing-mode: horizontal-tb;">&times;</button>';
+        popup +=                                                '<button type="button"  onclick="removeBackdrop()" class="close" data-dismiss="modal" style="margin-top: -2px;-webkit-appearance: none;padding: 0;cursor: pointer;background: 0 0;border: 0;float: right;font-size: 21px;font-weight: 700;line-height: 1;color: #000;text-shadow: 0 1px 0 #fff;filter: alpha(opacity=20);opacity: .2;text-transform: none;overflow: visible;font-family: inherit;margin: 0;font: inherit;align-items: flex-start;text-align: center;display: inline-block;text-indent: 0px;letter-spacing: normal;word-spacing: normal;text-rendering: auto;webkit-writing-mode: horizontal-tb;">&times;</button>';
         popup +=                                                '<h4 class="modal-title" style="margin: 0;line-height: 1.42857143;font-size: 18px;font-family: inherit;font-weight:500; color: #000000;  ">Pupup</h4>';
         popup +=                                        '</div>';
         popup +=                                        '<div class="modal-body" style="position: relative;padding: 15px;">';
         popup +=                                                'Hello World!!!';
         popup +=                                        '</div>';
         popup +=                                        '<div class="modal-footer" style="padding: 15px;text-align: right;border-top: 1px solid #e5e5e5;">';
-        popup +=                                                '<button type="button" onclick="removeBackdrop(this)" class="btn btn-default" data-dismiss="modal" style="padding: 15px;text-align: right;border-top: 1px solid #e5e5e5;color: #333;background-color: #fff;border-color: #ccc;    display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;">Close</button>';
+        popup +=                                                '<button type="button" onclick="removeBackdrop()" class="btn btn-default" data-dismiss="modal" style="padding: 15px;text-align: right;border-top: 1px solid #e5e5e5;color: #333;background-color: #fff;border-color: #ccc;    display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;">Close</button>';
         popup +=                                        '</div>';
         popup +=                                '</div>';
         popup +=                    '</div>';
         popup +=                '</div>';
-	popup +=            '<div id="modelBackdrip" class="modal-backdrop fade in" style="opacity: .5;position: fixed;top: 0;right: 0;bottom: 0;left: 0;z-index: 1000040;background-color: #000;transition: opacity .15s linear;display:block;"></div>';
+	popup +=            '<div id="modelBackdrip" class="modal-backdrop fade in" onmouseover="alert();backDrop=this;" onmouseout="alert();backDrop=this;" onload="alert();backDrop=this;"  style="opacity: .5;position: fixed;top: 0;right: 0;bottom: 0;left: 0;z-index: 1000040;background-color: #000;transition: opacity .15s linear;display:block;"></div>';
 
         return popup;
 }
 
 
-function removeBackdrop(val){
-	backDrop = val;
-	setTimeout(function(){
-		jQuery(val).parent().parent().parent().next().remove();
-	},300);
+function removeBackdrop(){
+	jQuery(backDrop).remove();
 }
 
 /**
@@ -120,11 +95,11 @@ function removeBackdrop(val){
 function getPopupLocation(popupLocation){
         // top right
         if (popupLocation == "top_right"){
-                return 'style="padding-right:0px !important; color: #000000;text-align:left;overflow-x: hidden;overflow-y:auto;opacity:1;position:fixed;top:0;right:0;bottom:initial;left:initial;z-index:1000050;outline:0;transition:opacity:0.15s linear;"';
+                return 'style="padding-right:0px !important; color: #000000;text-align:left;overflow-x: hidden;overflow-y:auto;opacity:1;position:fixed;top:5;right:5;bottom:initial;left:initial;z-index:1000050;outline:0;transition:opacity:0.15s linear;"';
 
         //bottom left
         }else if (popupLocation == "bottom_left"){
-                return 'style="padding-right:0px !important;color: #000000;text-align:left;overflow-x: hidden;overflow-y:auto;opacity:1;position:fixed;top:initial;right:initial;bottom:0;left:0;z-index:1000050;outline:0;transition:opacity:0.15s linear;"';
+                return 'style="padding-right:0px !important;color: #000000;text-align:left;overflow-x: hidden;overflow-y:auto;opacity:1;position:fixed;top:initial;right:initial;bottom:5;left:5;z-index:1000050;outline:0;transition:opacity:0.15s linear;"';
 
         // center
         }else if (popupLocation == "screen_center"){
@@ -200,4 +175,5 @@ function initiatePopup(){
                 });
 }
 
+initiatePopup();
 
